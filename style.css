@@ -1,0 +1,23 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    background-color: rgb(92, 233, 255);
+}
+.container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.quizContainer{
+    border:2px solid black;
+    width:40vw;
+    height:40vh;
+    background-color: aliceblue;
+}
+.quizContainer ul li{
+    list-style: none;
+}
