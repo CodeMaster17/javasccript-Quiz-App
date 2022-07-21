@@ -4,13 +4,15 @@
     box-sizing: border-box;
 }
 body{
-    background-color: rgb(92, 233, 255);
+    background-color: black;
 }
-.container{
+.startGameContainer{
+    color: white;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    border: 2px solid blue;;
 }
 .quizContainer{
     border:2px solid black;
@@ -20,4 +22,11 @@ body{
 }
 .quizContainer ul li{
     list-style: none;
+}
+.btn{
+    width:10vw;
+}
+.btn:disabled:hover{
+    cursor: not-allowed;
+
 }

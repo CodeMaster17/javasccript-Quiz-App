@@ -1,114 +1,107 @@
-console.log("quiz app console");
-const questionBank  = [
-    {
-        number : 1,
-        question : "What is CSS?",
-        option1 : "Cascading Style Sheets",
-        option2 : "Cascading Sheet Styles",
-        option3 : "Cascading Shower Sheets",
-        option4 : "Cascading Shower Styles",
-        solution : "ans1"
-    },
-    {
-        number : 2,
-        question : "What is the full form of JS",
-        option1 : "Javascripter",
-        option2 : "Javscript",
-        option3 : "Typescript",
-        option4 : "Java Syntax",
-        solution : "ans2"
-    },
-    {
-        number : 3,
-        question : "What is Raect JS?",
-        option1 : "HTML Framework",
-        option2 : "CSS Framework",
-        option3 : "Database",
-        option4 : "Javascript Framework",
-        solution : "ans4"
-    },
-    {
-        number : 4,
-        question : "What is Bootstrap",
-        option1 : "HTML Framework",
-        option2 : "CSS Framework",
-        option3 : "Database",
-        option4 : "Javascript Framework",
-        solution : "ans2"
-    }
-]
-
-var finalCheck = true;
+const question = document.getElementById("question");
+const choices = Array.from(document.getElementsByClassName('choice-text'));
+const questionCounterText = document.getElementById("questionCounter");
+const scoreText = document.getElementById("score");
+const progressBarFull = document.getElementById("progressBarFull");
+const gameContainer = document.getElementById("gameContainer");
+const loader = document.getElementById("loader");
+let currentQuestion = {};
+let acceptingAnswers = false;
 let score = 0;
-let question = document.getElementById("question");
-let questionNumber = document.getElementById("questionNumber");
-let submit = document.getElementById("submit");
-// console.log(submit);
-let number = 0;
-let  optInput1 = document.getElementById('ans1');
-let  optInput2 = document.getElementById('ans2');
-let  optInput3 = document.getElementById('ans3');
-let  optInput4 = document.getElementById('ans4');
-let opt1 = document.getElementById('opt1');
-let opt2 = document.getElementById('opt2');
-let opt3 = document.getElementById('opt3');
-let opt4 = document.getElementById('opt4');
-let trueBtn = questionBank[number].solution;
-let marks = 0;
+let questionCounter = 0;
+let availableQuestions = [];
 
-let next = document.getElementById("next");
-let prev = document.getElementById("prev");
+console.log("quiz app console");
+let questions  = [];
 
-
-window.addEventListener('DOMContentLoaded', function quizer(){
-    // console.log("widnow loaded");
-    quizApp(number);    
+fetch("questions.json")
+.then(res => {
+    return res.json();
 })
+.then(loadedQuestions =>{
+    console.log(loadedQuestions);
+    questions  = loadedQuestions;
 
-const verify = (check)=>{
-    if(trueBtn === check ){
-        // console.log(check);
-       return true;
-    }   
-    else{
-        return false;
-    }
+
+    startGame();
+})
+.catch(err =>{
+    // we can add here required error message
+    // console.error(err);
+})
+// adding catch case above so that to handle errors
+
+
+// CONSTANTS
+const CORRECT_BONUS = 10;
+const MAX_QUESTIONS = 5;
+
+startGame = () =>{
+    questionCounter=0;
+    score = 0;
+    availableQuestions = [...questions];
+    console.log(availableQuestions);
+    getNewQuestion();
+    gameContainer.classList.remove("d-none");
+    loader.classList.add("d-none");
 }
 
-const quizApp = (number) =>{
-    console.log("program iin here");
-    question.innerHTML = questionBank[number].question;
-    opt1.innerHTML = questionBank[number].option1;
-    opt2.innerHTML = questionBank[number].option2;
-    opt3.innerHTML = questionBank[number].option3;
-    opt4.innerHTML = questionBank[number].option4;  
-}
+getNewQuestion = () =>{
+    if(availableQuestions.length === 0 || questionCounter > MAX_QUESTIONS ){
+        localStorage.setItem("mostRecentScore", score);
+        // go to end page
+        return window.location.assign("/end.html")
+    }
+    questionCounter++;
 
-    var radios = document.querySelectorAll('input[type=radio][name="opt1"]');
-    radios.forEach(radio => radio.addEventListener('change', () => 
-    {
-        let check = radio.id;
-        // console.log(check);
-        var checking =  verify(check);
-        // console.log(checking);
-        finalCheck = checking;
-        unCheck(radio);
-    }));
-    function unCheck(radio){
-    radio.checked = false;
- }
-next.addEventListener(('click'),()=>{
-    if(finalCheck === true){
-        score ++;
-        // console.log(score);
-        questionNumber.innerHTML = questionBank[number].number;   
-        console.log(questionNumber);
-    }
-    if(number < questionBank.length){
-        number++;
-        quizApp(number);
-        // console.log(score);
-        questionNumber.innerHTML = questionBank[number].number;
-        console.log(questionNumber);
-    }
+    // questionCounterText.innerText = questionCounter +  "/" + MAX_QUESTIONS;
+    // writing above in ES6
+    questionCounterText.innerText = "Question: " + `${questionCounter}/${MAX_QUESTIONS}`;
+
+
+    // update progress bar
+    progressBarFull.style.width = `${(questionCounter / MAX_QUESTIONS) * 100}px`;
+
+    const questionIndex = Math.floor(Math.random() * availableQuestions.length);
+
+     currentQuestion = availableQuestions[questionIndex];
+     question.innerHTML = currentQuestion.question;
+
+     choices.forEach(choice => {
+        const number = choice.dataset["number"];
+        choice.innerHTML = currentQuestion['choice' + number];
+     });
+
+     availableQuestions.splice(questionIndex, 1);
+     acceptingAnswers = true;
+};
+
+choices.forEach(choice =>{
+    choice.addEventListener('click', e =>{
+        if(!acceptingAnswers) return;
+
+        acceptingAnswers=false;
+        const selectedChoice = e.target;
+        const selectedAnswer = selectedChoice.dataset["number"];
+
+
+        const classtoApply = selectedAnswer ===  currentQuestion.answer ? "correct" : "incorrect";
+
+        if(classtoApply === "correct"){
+            incremenScore(CORRECT_BONUS);
+        }
+
+        selectedChoice.parentElement.classList.add(classtoApply);
+        
+        setTimeout(()=>{
+            console.log("setTimeout")
+            selectedChoice.parentElement.classList.remove(classtoApply);
+            getNewQuestion()
+        },1000);
+    })
 })
+incremenScore = num =>{
+    score += num;
+    scoreText.innerText = score;
+}
+// startGame();
