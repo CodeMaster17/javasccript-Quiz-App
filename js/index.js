@@ -34,7 +34,7 @@ fetch("./json/questions.json")
 
 // CONSTANTS
 const CORRECT_BONUS = 10;
-const MAX_QUESTIONS = 5;
+const MAX_QUESTIONS = 4;
 
 startGame = () =>{
     questionCounter=0;
@@ -58,7 +58,7 @@ getNewQuestion = () =>{
 
 
     // update progress bar
-    progressBarFull.style.width = `${(questionCounter / MAX_QUESTIONS) * 100}%`;
+    progressBarFull.style.width = `${((questionCounter)/ MAX_QUESTIONS) * 100}%`;
 
     const questionIndex = Math.floor(Math.random() * availableQuestions.length);
 

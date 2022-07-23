@@ -15,7 +15,8 @@ body{
     display: flex;
     justify-content: center;
     /* align-content: center ; */
-    background: url(../img/building-bg.jpg);
+    /* background: url(../img/building-bg.jpg); */
+    background-image: linear-gradient(to top, #0367ff, #008bff, #00a9ff, #00c2ff, #00d9fd);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;

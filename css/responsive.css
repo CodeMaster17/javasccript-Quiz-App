@@ -1,0 +1,30 @@
+/* end css */
+@media screen and (width: 414px),
+screen and (height: 896px){
+    .endContainer{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .containerInner{
+        width: 80%;
+    height:58%;
+    }
+    input{
+        font-size: 120%;
+        width:130%;
+    }
+
+    #finalScore{
+        font-size: 60px;
+    }
+    .save{
+        height:35%;
+        font-size: 137%;
+    }
+    .containerInner a,.btn{
+        height:60px;
+        font-size: 20px;
+        width: 150px;
+    }
+}

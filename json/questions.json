@@ -30,13 +30,5 @@
         "choice3": "Database",
         "choice4": "Javascript Framework",
         "answer": "2"
-    },
-    {
-        "question": "What is Bootstrap",
-        "choice1": "HTML Framework",
-        "choice2": "CSS Framework",
-        "choice3": "Database",
-        "choice4": "Javascript Framework",
-        "answer": "2"
     }
 ]
