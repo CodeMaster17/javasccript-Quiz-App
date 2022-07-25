@@ -1,13 +1,12 @@
 /* end css */
-@media screen and (width: 414px),
-screen and (height: 896px){
+@media screen and (width: 416px){
     .endContainer{
         display: flex;
         justify-content: center;
         align-items: center;
     }
     .containerInner{
-        width: 80%;
+        width: 90%;
     height:58%;
     }
     input{
