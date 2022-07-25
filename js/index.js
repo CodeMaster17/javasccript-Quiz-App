@@ -14,7 +14,7 @@ let availableQuestions = [];
 console.log("quiz app console");
 let questions  = [];
 
-fetch("./json/questions.json")
+fetch("./json/aboutme.json")
 .then(res => {
     return res.json();
 })

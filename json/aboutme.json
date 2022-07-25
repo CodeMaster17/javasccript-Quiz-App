@@ -1,6 +1,6 @@
 [
     {
-        "question": "What's my favourite color?",
+        "question": "What's Harshit favourite color? Choose the correct option.",
         "choice1": "Red",
         "choice2": "Sky Blue Shade",
         "choice3": "Black",
@@ -8,27 +8,27 @@
         "answer": "1"
     },
     {
-        "question": "What is the full form of JS? Choose the correct option.",
-        "choice1": "Javascripter",
-        "choice2": "Javscript",
-        "choice3": "Typescript",
-        "choice4": "Java Syntax",
+        "question": "Which dish Harshit likes the most? Choose the correct option.",
+        "choice1": "Golgappa",
+        "choice2": "Momo",
+        "choice3": "Ice-cream",
+        "choice4": "Baby Corn",
         "answer": "2"
     },
     {
-        "question": "What is React JS?",
-        "choice1": "HTML Framework",
-        "choice2": "CSS Framework",
-        "choice3": "Database",
-        "choice4": "Javascript Framework",
+        "question": "Who's Harshit favourite cricket player? Choose the correct option?",
+        "choice1": "MS Dhoni",
+        "choice2": "Rishabh Pant",
+        "choice3": "Rohit Sharma",
+        "choice4": "Virat Kohli",
         "answer": "4"
     },
     {
-        "question": "What is Bootstrap",
-        "choice1": "HTML Framework",
-        "choice2": "CSS Framework",
-        "choice3": "Database",
-        "choice4": "Javascript Framework",
+        "question": "What Harshit likes the most?",
+        "choice1": "Clothes",
+        "choice2": "Electronic gadgets",
+        "choice3": "Shoes",
+        "choice4": "Stationery",
         "answer": "2"
     }
 ]
