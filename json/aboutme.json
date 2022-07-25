@@ -1,0 +1,34 @@
+[
+    {
+        "question": "What's my favourite color?",
+        "choice1": "Red",
+        "choice2": "Sky Blue Shade",
+        "choice3": "Black",
+        "choice4": "Green",
+        "answer": "1"
+    },
+    {
+        "question": "What is the full form of JS? Choose the correct option.",
+        "choice1": "Javascripter",
+        "choice2": "Javscript",
+        "choice3": "Typescript",
+        "choice4": "Java Syntax",
+        "answer": "2"
+    },
+    {
+        "question": "What is React JS?",
+        "choice1": "HTML Framework",
+        "choice2": "CSS Framework",
+        "choice3": "Database",
+        "choice4": "Javascript Framework",
+        "answer": "4"
+    },
+    {
+        "question": "What is Bootstrap",
+        "choice1": "HTML Framework",
+        "choice2": "CSS Framework",
+        "choice3": "Database",
+        "choice4": "Javascript Framework",
+        "answer": "2"
+    }
+]
