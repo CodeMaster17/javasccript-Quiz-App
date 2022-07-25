@@ -205,7 +205,7 @@ body{
   }
   .leftSide{
     width:99%;
-    height: 66%;
+    height: 60vh;
   }
   #question{
     font-size: 135%;
